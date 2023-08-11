@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from '../components/Link.js'
 import ListMatch from '../components/ListMatch.js'
 import DetailMatch from "../components/DetailMatch.js"
+import DetailSchedule from "../components/DetailSchedule";
 
 
 function ParentMatch() {
@@ -26,27 +27,36 @@ function ParentMatch() {
     const go_back = () => {
         setSelectedMatch(null)
     };
-    
-    return ( 
-        <div>
 
-            <Link/>
-            {selectedMatch ? (
+    let content ;
+
+    if ( selectedMatch ) {
+        content = (
+            <>
                 <DetailMatch match={selectedMatch} go_prev={go_back}  id_user = { id_user } />
-            ) : (
+            </>
+        )
+    }
+    else {
+        content = (
+            <>
                 <div>
                     <ListMatch matches={data} onSelectMatch={handleSelectMatch} />
-
                     <div>
                         <input  type="number"  placeholder="id_user" value={id_user} onChange={e => setIdUser(e.target.value)} />
                     </div>
                 </div>
-            )}
-
-
-
+            </>
+        )
+    }
+    
+    return ( 
+        <div>
+            <Link/>
+            <div>
+                { content }
+            </div>
         </div>
-
     );
 }
 

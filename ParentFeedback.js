@@ -82,7 +82,7 @@ function ParentFeedback() {
             content = (
                 <>
                     <DetailFeedback feedback ={ selectedFeedback } go_prev = {go_back}  /> ;
-                    <SubmitFeedback feedback ={ selectedFeedback } please_refresh_the_call = { please_refresh_the_call } go_prev = {go_back}   /> ;
+                    <SubmitFeedback feedback ={ selectedFeedback } please_refresh_the_call = { please_refresh_the_call } go_prev = {go_back}  id_user = { id_user } /> ;
 
                 </>
             )
@@ -93,11 +93,10 @@ function ParentFeedback() {
 
                 <>
                     <DetailFeedback feedback ={ selectedFeedback } go_prev = {go_back}  /> ;
-                    <DeleteFeedback feedback ={ selectedFeedback } /> ;
+                    <DeleteFeedback feedback = { selectedFeedback } go_prev = {go_back} /> ;
                 </>
             )
         }
-
 
 
     }

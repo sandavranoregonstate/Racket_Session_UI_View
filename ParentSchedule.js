@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from '../components/Link.js'
 import ListSchedule from "../components/ListSchedule.js"
+
 import DetailSchedule from "../components/DetailSchedule";
+import SelectLocation from "../components/SelectLocation"
+import SelectType from "../components/SelectType"
+import SelectStartTime from "../components/SelectStartTime"
 
 async function sendPost( id_user, location, date , start_time , type ) {
     const response = await fetch('http://127.0.0.1:8000/new_schedule_and_match/schedules/', {
@@ -52,7 +56,6 @@ function ParentSchedule () {
 
     const [ list_start_time , setListStartTime ] = useState([ 6 , 7 , 8 , 9 , 10 , 11 , 12 ,13 ,14 ,15 , 16 , 17 , 18 , 19 , 20  ] )
 
-
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/new_schedule_and_match/schedules/?id_user=${id_user}`) // Replace with your API URL
             .then(response => response.json())
@@ -76,86 +79,61 @@ function ParentSchedule () {
         setSelectedSchedule(null)
     };
 
+    const handleRefresh = () => {
+        if ( please_refresh === 1 ) {
+            console.log(1 )
+            setPleaseRefresh( 2 ) ;
+        }
+        else {
+            console.log( 2  )
+            setPleaseRefresh( 1 ) ;
+        }
+    };
 
+    let content ;
 
-    return (
-        <div>
-
-            <Link/>
-            {selectedSchedule ? (
+    if ( selectedSchedule ) {
+        content = (
+            <>
                 <DetailSchedule schedule={selectedSchedule} go_prev={go_back} this_delete = { this_delete } />
-            ) : (
+            </>
+        )
+    }
+    else {
+        content = (
+            <>
                 <div>
                     <ListSchedule schedules={data} onSelectSchedule={handleSelectSchedule} />
                     <form onSubmit={e => {
                         e.preventDefault() ;
-
+                        handleRefresh()
                         sendPost( id_user, location , date , start_time , type ) ;
-
-                        if ( please_refresh === 1 ) {
-                            console.log(1 )
-                            setPleaseRefresh( 2 ) ;
-                            //
-                        }
-                        else {
-
-                            console.log( 2  )
-                            setPleaseRefresh( 1 ) ;
-                            //
-                        }
-
                     }}>
-
-                        <select value={location} onChange={e => setLocation(e.target.value)}>
-                            <option value="" >Select a Location</option>
-
-                            {
-                                list_location.map((given_location, index) => (
-                                    <option key={given_location} value={given_location}>
-                                        {given_location}
-                                    </option>
-                                ))}
-                        </select>
-
+                        < SelectLocation location = { location }  setLocation = { setLocation } list_location = { list_location } />
                         <div>
                             <input  type="number"  placeholder="id_user" value={id_user} onChange={e => setIdUser(e.target.value)} />
                         </div>
                         <div>
                             <input type = "date" placeholder="date" value={date} onChange={e => setDate(e.target.value)} />
                         </div>
-
-                        <select value={type} onChange={e => setType(e.target.value)}>
-                        <option value="" >Select a Type</option>
-
-                        {
-                            list_type.map((the_type, index) => (
-                                <option key={the_type} value={the_type}>
-                                    {the_type}
-                                </option>
-                            ))}
-                        </select>
-
-                        <select value={start_time} onChange={e => setStartTime(e.target.value)}>
-                            <option value="" >Select a Start </option>
-
-                            {
-                                list_start_time.map((start_block, index) => (
-                                    <option key={start_block} value={start_block}>
-                                        {start_block}
-                                    </option>
-                                ))}
-                        </select>
-
+                        < SelectType type = { type }  setType = { setType } list_type = { list_type } />
+                        < SelectStartTime start_time = { start_time }  setStartTime = { setStartTime } list_start_time = { list_start_time } />
                         <div>
                             <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
-            )}
+            </>
+        )
+    }
 
-
+    return (
+        <div>
+            <Link/>
+            <div>
+                { content }
+            </div>
         </div>
-
     );
 }
 

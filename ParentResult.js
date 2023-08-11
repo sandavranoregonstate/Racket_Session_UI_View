@@ -78,7 +78,7 @@ function ParentFeedback() {
             content = (
                 <>
                     <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
-                    <SubmitResult the_result ={ selectedResult } please_refresh_the_call = { please_refresh_the_call } go_prev = { go_back } /> ;
+                    <SubmitResult the_result ={ selectedResult } please_refresh_the_call = { please_refresh_the_call } go_prev = { go_back } id_user = { id_user }/> ;
 
                 </>
             )

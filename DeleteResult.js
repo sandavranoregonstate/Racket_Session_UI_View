@@ -23,7 +23,7 @@ function DeleteResult({ the_result , go_prev }) {
     };
     return (
         <div>
-            <button onClick={() => CallDeleteResult( the_result.id_result )}> Delete Feedback </button>
+            <button onClick={() => handleCallDeleteResult( the_result.id_result )}> Delete Result </button>
         </div>
     );
 }
