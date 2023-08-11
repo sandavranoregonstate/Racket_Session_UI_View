@@ -1,9 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 
 
-import './App.css'
 import ListFeedback from "./pages/ParentFeedback";
 import Result from "./pages/ListResult";
 import ParentMatch from "./pages/ParentMatch";
@@ -12,6 +11,9 @@ import ParentFeedback from "./pages/ParentFeedback";
 import ParentResult from "./pages/ParentResult";
 
 function App() {
+
+    const [ id_user, setIdUser ] = useState( 1 );
+
     return (
         <Routes>
 
@@ -22,6 +24,7 @@ function App() {
 
             <Route path="/" element={<Navigate to="/search" />} />
         </Routes>
+
     )
 }
 

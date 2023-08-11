@@ -18,7 +18,7 @@ async function CallSubmitResult( id_result, id_user,  id_player_victory ) {
 
 }
 
-function SubmitResult( { the_result }) {
+function SubmitResult( { the_result , go_prev , please_refresh_the_call }) {
     const [id_user, setIdUser] = useState('');
     const [id_player_victory, setIdPlayerVictory] = useState(null);
 
@@ -32,6 +32,10 @@ function SubmitResult( { the_result }) {
                 id_player_victory
 
             );
+
+            go_prev() ;
+            please_refresh_the_call() ;
+
         }}>
 
             <div>

@@ -23,7 +23,7 @@ async function CallSubmitFeedback( id_user, id_feedback,  serve_feedback, receiv
 
 }
 
-function SubmitFeedback( { feedback }) {
+function SubmitFeedback( { feedback , please_refresh_the_call , go_prev }) {
     const [id_user, setIdUser] = useState('');
     const [serve_feedback, setServeFeedback] = useState(null);
     const [receive_feedback, setReceiveFeedback] = useState(null);
@@ -47,6 +47,9 @@ function SubmitFeedback( { feedback }) {
                 backhand_block_feedback,
                 personal_feedback
             );
+            go_prev() ;
+            please_refresh_the_call() ;
+
         }}>
 
             <div>

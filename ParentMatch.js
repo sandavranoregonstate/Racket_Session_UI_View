@@ -32,14 +32,18 @@ function ParentMatch() {
 
             <Link/>
             {selectedMatch ? (
-                <DetailMatch match={selectedMatch} go_prev={go_back} />
+                <DetailMatch match={selectedMatch} go_prev={go_back}  id_user = { id_user } />
             ) : (
-                <ListMatch matches={data} onSelectMatch={handleSelectMatch} />
+                <div>
+                    <ListMatch matches={data} onSelectMatch={handleSelectMatch} />
+
+                    <div>
+                        <input  type="number"  placeholder="id_user" value={id_user} onChange={e => setIdUser(e.target.value)} />
+                    </div>
+                </div>
             )}
 
-            <div>
-                <input  type="number"  placeholder="id_user" value={id_user} onChange={e => setIdUser(e.target.value)} />
-            </div>
+
 
         </div>
 

@@ -16,6 +16,7 @@ function ParentFeedback() {
 
     const [selectedResult, setSelectedResult ] = useState(null);
 
+    const [ please_refresh, setPleaseRefresh ] = useState( 1 ) ;
 
     useEffect(() => {
 
@@ -35,6 +36,20 @@ function ParentFeedback() {
 
     const go_back = () => {
         setSelectedResult(null)
+    };
+
+    const please_refresh_the_call = () => {
+        if ( please_refresh === 1 ) {
+            console.log(1 )
+            setPleaseRefresh( 2 ) ;
+            //
+        }
+        else {
+
+            console.log( 2  )
+            setPleaseRefresh( 1 ) ;
+            //
+        }
     };
 
     const handleSelectResult = (the_result_id) => {
@@ -63,7 +78,7 @@ function ParentFeedback() {
             content = (
                 <>
                     <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
-                    <SubmitResult the_result ={ selectedResult } /> ;
+                    <SubmitResult the_result ={ selectedResult } please_refresh_the_call = { please_refresh_the_call } go_prev = { go_back } /> ;
 
                 </>
             )
@@ -76,7 +91,7 @@ function ParentFeedback() {
 
                 <>
                     <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
-                    <DeleteResult the_result ={ selectedResult } /> ;
+                    <DeleteResult the_result ={ selectedResult } go_prev = { go_back} /> ;
                 </>
             )
 

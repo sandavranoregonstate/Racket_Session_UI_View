@@ -15,8 +15,10 @@ function ParentFeedback() {
     const [ list_pending_feedbacks, setListPendingFeedbacks ] = useState( [] ) ;
     const [ list_completed_feedbacks, setListCompletedFeedbacks ] = useState( []) ;
 
-
     const [selectedFeedback, setSelectedFeedback ] = useState(null);
+
+    const [ please_refresh, setPleaseRefresh ] = useState( 1 ) ;
+
 
     useEffect(() => {
 
@@ -32,10 +34,24 @@ function ParentFeedback() {
             .then(response => response.json())
             .then(data => setListPendingFeedbacks(data));
 
-    }, [ type_feedback , id_user ]);
+    }, [ type_feedback , id_user , please_refresh ]);
 
     const go_back = () => {
         setSelectedFeedback(null)
+    };
+
+    const please_refresh_the_call = () => {
+        if ( please_refresh === 1 ) {
+            console.log(1 )
+            setPleaseRefresh( 2 ) ;
+            //
+        }
+        else {
+
+            console.log( 2  )
+            setPleaseRefresh( 1 ) ;
+            //
+        }
     };
 
     const handleSelectFeedback = (feedbackId) => {
@@ -66,7 +82,7 @@ function ParentFeedback() {
             content = (
                 <>
                     <DetailFeedback feedback ={ selectedFeedback } go_prev = {go_back}  /> ;
-                    <SubmitFeedback feedback ={ selectedFeedback } /> ;
+                    <SubmitFeedback feedback ={ selectedFeedback } please_refresh_the_call = { please_refresh_the_call } go_prev = {go_back}   /> ;
 
                 </>
             )

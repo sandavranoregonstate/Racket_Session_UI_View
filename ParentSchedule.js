@@ -46,12 +46,19 @@ function ParentSchedule () {
     const [ start_time, setStartTime ] = useState() ;
     const [ type, setType ] = useState() ;
 
+    const [ please_refresh, setPleaseRefresh ] = useState( 1 ) ;
+    const [ list_type , setListType ] = useState([ "training" , "competitive" ] )
+    const [ list_location , setListLocation ] = useState([ "SPTTC" ] )
+
+    const [ list_start_time , setListStartTime ] = useState([ 6 , 7 , 8 , 9 , 10 , 11 , 12 ,13 ,14 ,15 , 16 , 17 , 18 , 19 , 20  ] )
+
+
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/new_schedule_and_match/schedules/?id_user=${id_user}`) // Replace with your API URL
             .then(response => response.json())
             .then(data => setData(data));
 
-    }, [id_user]);
+    }, [id_user , please_refresh ]);
 
     const handleSelectSchedule = (scheduleId) => {
         // Fetch details for the selected match.
@@ -70,6 +77,7 @@ function ParentSchedule () {
     };
 
 
+
     return (
         <div>
 
@@ -83,23 +91,60 @@ function ParentSchedule () {
                         e.preventDefault() ;
 
                         sendPost( id_user, location , date , start_time , type ) ;
+
+                        if ( please_refresh === 1 ) {
+                            console.log(1 )
+                            setPleaseRefresh( 2 ) ;
+                            //
+                        }
+                        else {
+
+                            console.log( 2  )
+                            setPleaseRefresh( 1 ) ;
+                            //
+                        }
+
                     }}>
 
-                        <div>
-                            <input placeholder="location" value={location} onChange={e => setLocation(e.target.value)} />
-                        </div>
+                        <select value={location} onChange={e => setLocation(e.target.value)}>
+                            <option value="" >Select a Location</option>
+
+                            {
+                                list_location.map((given_location, index) => (
+                                    <option key={given_location} value={given_location}>
+                                        {given_location}
+                                    </option>
+                                ))}
+                        </select>
+
                         <div>
                             <input  type="number"  placeholder="id_user" value={id_user} onChange={e => setIdUser(e.target.value)} />
                         </div>
                         <div>
                             <input type = "date" placeholder="date" value={date} onChange={e => setDate(e.target.value)} />
                         </div>
-                        <div>
-                            <input type = "number" placeholder="start_time" value={start_time} onChange={e => setStartTime(e.target.value)} />
-                        </div>
-                        <div>
-                            <input placeholder="type" value={type} onChange={e => setType(e.target.value)} />
-                        </div>
+
+                        <select value={type} onChange={e => setType(e.target.value)}>
+                        <option value="" >Select a Type</option>
+
+                        {
+                            list_type.map((the_type, index) => (
+                                <option key={the_type} value={the_type}>
+                                    {the_type}
+                                </option>
+                            ))}
+                        </select>
+
+                        <select value={start_time} onChange={e => setStartTime(e.target.value)}>
+                            <option value="" >Select a Start </option>
+
+                            {
+                                list_start_time.map((start_block, index) => (
+                                    <option key={start_block} value={start_block}>
+                                        {start_block}
+                                    </option>
+                                ))}
+                        </select>
 
                         <div>
                             <button type="submit">Submit</button>
