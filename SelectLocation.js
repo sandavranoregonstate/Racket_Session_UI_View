@@ -7,8 +7,8 @@ function SelectLocation({ location , setLocation , list_location }) {
 
             {
                 list_location.map((given_location, index) => (
-                    <option key={given_location} value={given_location}>
-                        {given_location}
+                    <option key={given_location.name} value={given_location.name}>
+                        {given_location.name}
                     </option>
                 ))}
         </select>

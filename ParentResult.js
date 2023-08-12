@@ -77,6 +77,7 @@ function ParentFeedback() {
 
             content = (
                 <>
+                    <h2> Pending Result </h2>
                     <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
                     <SubmitResult the_result ={ selectedResult } please_refresh_the_call = { please_refresh_the_call } go_prev = { go_back } id_user = { id_user }/> ;
 
@@ -90,6 +91,8 @@ function ParentFeedback() {
             content = (
 
                 <>
+                    <h2> Completed Result </h2>
+
                     <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
                     <DeleteResult the_result ={ selectedResult } go_prev = { go_back} /> ;
                 </>
@@ -102,6 +105,9 @@ function ParentFeedback() {
         if ( type_result === "pending") {
             content = (
                 <>
+
+                    <h2> Pending Results </h2>
+
                     <ListResult results={list_pending_results}  onSelectResult={handleSelectResult}/>
                     <button onClick={() => setTypeResult("pending")}> Pending </button>
                     <button onClick={() => setTypeResult("completed")}> Completed </button>
@@ -115,6 +121,9 @@ function ParentFeedback() {
         else {
             content = (
                 <>
+
+                    <h2> Completed Results </h2>
+
                     <ListResult results={list_completed_results} onSelectResult={handleSelectResult} /> ;
                     <button onClick={() => setTypeResult("pending")}> Pending </button>
                     <button onClick={() => setTypeResult("completed")}> Completed </button>

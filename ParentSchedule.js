@@ -7,6 +7,9 @@ import SelectLocation from "../components/SelectLocation"
 import SelectType from "../components/SelectType"
 import SelectStartTime from "../components/SelectStartTime"
 
+
+import './ParentSchedule.css';
+
 async function sendPost( id_user, location, date , start_time , type ) {
     const response = await fetch('http://127.0.0.1:8000/new_schedule_and_match/schedules/', {
         method: 'POST',
@@ -60,6 +63,10 @@ function ParentSchedule () {
         fetch(`http://127.0.0.1:8000/new_schedule_and_match/schedules/?id_user=${id_user}`) // Replace with your API URL
             .then(response => response.json())
             .then(data => setData(data));
+
+        fetch(`http://127.0.0.1:8000/new_schedule_and_match/locations`) // Replace with your API URL
+            .then(response => response.json())
+            .then(data => setListLocation(data));
 
     }, [id_user , please_refresh ]);
 

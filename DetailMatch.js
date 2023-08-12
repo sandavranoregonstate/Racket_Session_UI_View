@@ -1,4 +1,5 @@
 import React from "react";
+import DetailSchedule from "./DetailSchedule";
 
 async function AcceptMatch( id_match , id_user ) {
     const response = await fetch(`http://127.0.0.1:8000/new_schedule_and_match/matches/${ id_match }/accept` , {
@@ -51,7 +52,7 @@ async function DeleteMatch( id_match , id_user ) {
 
 
 
-function DetailMatch({ match , go_prev , id_user }) {
+function DetailMatch({ match , type_match , go_prev , id_user }) {
 
     const accept_handler = () => {
         AcceptMatch( match.Match.id_match , id_user ) ;
@@ -69,15 +70,52 @@ function DetailMatch({ match , go_prev , id_user }) {
     };
 
 
+
+    let content ;
+
+    if ( type_match == "is_session" ) {
+        content = (
+            <>
+                <button onClick={() => delete_handler()}> Delete Match </button>
+            </>
+        )
+    }
+    else if ( type_match == "pending" ) {
+        content = (
+            <>
+                <button onClick={() => accept_handler()}> Accept Match </button>
+                <button onClick={() => reject_handler()}> Reject Match </button>
+            </>
+        )
+    }
+
+    else if ( type_match == "accepted" ) {
+        content = (
+            <>
+                <button onClick={() => reject_handler()}> Reject Match </button>
+
+            </>
+        )
+    }
+
+    else if ( type_match == "rejected" ) {
+        content = (
+            <>
+                <button onClick={() => accept_handler()}> Accept Match </button>
+            </>
+        )
+    }
+
+
+
+
     return (
         <div>
 
             <button onClick={() => go_prev()}> Go Prev </button>
             <h1>{match.Match.id_match}</h1>
 
-            <button onClick={() => accept_handler()}> Accept Match </button>
-            <button onClick={() => reject_handler()}> Reject Match </button>
-            <button onClick={() => delete_handler()}> Delete Match </button>
+            { content }
 
         </div>
     );

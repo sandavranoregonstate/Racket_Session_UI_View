@@ -5,9 +5,11 @@ function DetailFeedback({ feedback , go_prev }) {
         <div>
             <button onClick={() => go_prev()}> Go Prev </button>
 
-            <h1>{feedback.id_feedback}</h1>
+            <h1> Id Feedback : {feedback.id_feedback}</h1>
         </div>
     );
 }
+
+
 
 export default  DetailFeedback ;

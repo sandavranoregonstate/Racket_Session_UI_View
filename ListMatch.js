@@ -14,7 +14,7 @@ function ListMatch( { matches, onSelectMatch }) {
             </ul>
         </div>
     );
-}
+} 
 
 export default ListMatch ;
 

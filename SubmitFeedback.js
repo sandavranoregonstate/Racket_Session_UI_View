@@ -23,7 +23,7 @@ async function CallSubmitFeedback( id_user, id_feedback,  serve_feedback, receiv
 
 }
 
-function SubmitFeedback( { feedback , please_refresh_the_call , go_prev , id_user }) {
+function SubmitFeedback( { feedback , go_prev , id_user }) {
     const [serve_feedback, setServeFeedback] = useState(null);
     const [receive_feedback, setReceiveFeedback] = useState(null);
     const [forehand_loop_feedback, setForehandLoopFeedback] = useState(null);
@@ -47,11 +47,8 @@ function SubmitFeedback( { feedback , please_refresh_the_call , go_prev , id_use
                 personal_feedback
             );
             go_prev() ;
-            please_refresh_the_call() ;
 
         }}>
-
-
 
             <div>
                 <input type="number" placeholder="serve_feedback (1-10)" min="1" max="10" value={serve_feedback || ''} onChange={e => setServeFeedback(e.target.value)} />

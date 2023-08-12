@@ -17,11 +17,8 @@ async function CallDeleteFeedback( id_feedback ) {
 
 function DeleteFeedback({ feedback , go_prev }) {
 
-
     const handleCallDeleteFeedback = ( the_feedback_id_feedback ) => {
         CallDeleteFeedback( the_feedback_id_feedback ) ;
-
-        console.log(the_feedback_id_feedback) ;
         go_prev() ;
     };
 
