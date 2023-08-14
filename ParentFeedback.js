@@ -5,6 +5,8 @@ import DetailFeedback from "../components/DetailFeedback";
 import SubmitFeedback from "../components/SubmitFeedback";
 import DeleteFeedback from "../components/DeleteFeedback";
 
+import TheCompletedDetailFeedback from "../components/TheCompletedDetailFeedback"
+
 function ParentFeedback() {
     const [ id_user, setIdUser ] = useState( 1 );
     const [ type_feedback, setTypeFeedback ] = useState( "pending" ) ;
@@ -62,6 +64,8 @@ function ParentFeedback() {
                 <>
                     <h2> Completed Feedback </h2>
                     <DetailFeedback feedback ={ selectedFeedback } go_prev = {go_back}  /> ;
+                    <TheCompletedDetailFeedback feedback ={ selectedFeedback } go_prev = {go_back}  /> ;
+
                     <DeleteFeedback feedback = { selectedFeedback } go_prev = {go_back} /> ;
                 </>
             )

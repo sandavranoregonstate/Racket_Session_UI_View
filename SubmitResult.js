@@ -32,13 +32,13 @@ function SubmitResult( { the_result , go_prev , please_refresh_the_call , id_use
     const handleChange = (data) => {
         // Fetch details for the selected match.
         console.log(id_match )
-        setIdPlayerA( data.Match.id_player_a )
-        setIdPlayerB( data.Match.id_player_b )
+        setIdPlayerA( data.id_player_a.id_user )
+        setIdPlayerB( data.id_player_b.id_user )
 
     };
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/new_schedule_and_match/matches/${the_result.id_match }`) // Replace with your API URL
+        fetch(`http://127.0.0.1:8000/new_schedule_and_match/matches/${the_result.id_match.id_match }`) // Replace with your API URL
             .then(response => response.json())
             .then(data => handleChange(data));
 

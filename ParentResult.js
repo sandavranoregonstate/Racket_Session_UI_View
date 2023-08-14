@@ -30,7 +30,7 @@ function ParentFeedback() {
         the_url = `http://127.0.0.1:8000/new_schedule_and_match/pending_results/?id_user=${id_user}` ;
         fetch(the_url) // Replace with your API URL
             .then(response => response.json())
-            .then(data => setListPendingResults(data));
+            .then(data => setListPendingResults(data)); 
 
     }, [ type_result , id_user ]);
 

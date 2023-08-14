@@ -12,19 +12,16 @@ function ListFeedback ( { feedbacks , onSelectFeedback }) {
                 {feedbacks.map(feedback => (
 
                     <ul>
-                        <li >
-                        Id Player A : { feedback.id_player_a }
-                        </li>
+                        <li > Id Player A : { feedback.id_player_a.id_user } </li>
+                        <li > Id Player A : { feedback.id_player_a.name } </li>
+                        <li > Id Player A : { feedback.id_player_a.last_name } </li>
 
-                        <li >
-                                Id Player B : { feedback.id_player_b }
-                            </li>
-                            <li >
-                                Id Feedback : { feedback.id_match }
-                            </li>
-                            <li >
-                                <button onClick={() => onSelectFeedback(feedback.id_feedback)}> Id Feedback : { feedback.id_feedback}</button>
-                            </li>
+                        <li > Id Player B : { feedback.id_player_b.id_user } </li>
+                        <li > Id Player A : { feedback.id_player_a.name } </li>
+                        <li > Id Player A : { feedback.id_player_a.last_name } </li>
+
+                        <li > Id Feedback : { feedback.id_match.id_match } </li>
+                        <li > <button onClick={() => onSelectFeedback(feedback.id_feedback)}> Id Feedback : { feedback.id_feedback}</button> </li>
                     </ul>
 
 

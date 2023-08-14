@@ -6,7 +6,7 @@ import DetailMatch from "../components/DetailMatch.js"
 function ParentMatch() {
     const [selectedMatch, setSelectedMatch] = useState(null);
     const [data, setData] = useState([]);
-    const [ id_user, setIdUser ] = useState( 1 );
+    const [ id_user, setIdUser ] = useState( null );
     const [ type_match, setTypeMatch ] = useState( "is_session" );
 
     useEffect(() => {
