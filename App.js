@@ -10,6 +10,10 @@ import ParentSchedule from "./pages/ParentSchedule";
 import ParentFeedback from "./pages/ParentFeedback";
 import ParentResult from "./pages/ParentResult";
 
+import SignInPage from "./pages/SignInPage"
+import SignOutPage from "./pages/SignOutPage"
+import LogInPage from "./pages/LogInPage"
+
 function App() {
 
     const [ id_user, setIdUser ] = useState( 1 );
@@ -23,6 +27,10 @@ function App() {
             <Route path="/result" element={<ParentResult />} />
 
             <Route path="/" element={<Navigate to="/search" />} />
+
+            <Route path="/the_register" element={<LogInPage />} />
+            <Route path="/log_in" element={<SignInPage />} />
+            <Route path="/log_exit" element={<SignOutPage />} />
         </Routes>
 
     )
