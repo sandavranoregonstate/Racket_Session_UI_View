@@ -6,6 +6,8 @@ import DetailFeedback from "../components/DetailFeedback";
 import SubmitResult from "../components/SubmitResult";
 import DeleteResult from "../components/DeleteResult";
 
+import TheCompletedDetailResult from "../components/TheCompletedDetailResult"
+
 
 function ParentFeedback() {
     const [ id_user, setIdUser ] = useState( 1 );
@@ -93,7 +95,7 @@ function ParentFeedback() {
                 <>
                     <h2> Completed Result </h2>
 
-                    <DetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
+                    <TheCompletedDetailResult the_result ={ selectedResult } go_prev = {go_back}  /> ;
                     <DeleteResult the_result ={ selectedResult } go_prev = { go_back} /> ;
                 </>
             )

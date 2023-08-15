@@ -52,7 +52,7 @@ async function DeleteMatch( id_match , id_user ) {
 
 
 
-function DetailMatch({ match , type_match , go_prev , id_user }) {
+function DetailMatch({ match , type_match , ie ,  go_prev , id_user }) {
 
     const accept_handler = () => {
         AcceptMatch( match.Match.id_match , id_user ) ;
@@ -80,7 +80,8 @@ function DetailMatch({ match , type_match , go_prev , id_user }) {
             </>
         )
     }
-    else if ( type_match == "pending" ) {
+
+    else if ( type_match == "pending" && ie == "future" ) {
         content = (
             <>
                 <button onClick={() => accept_handler()}> Accept Match </button>
@@ -89,7 +90,12 @@ function DetailMatch({ match , type_match , go_prev , id_user }) {
         )
     }
 
-    else if ( type_match == "accepted" ) {
+    else if ( type_match == "pending" && ie == "past" ) {
+        content = (
+            <></>
+        )
+    }
+    else if ( type_match == "accepted" && ie == "future" ) {
         content = (
             <>
                 <button onClick={() => reject_handler()}> Reject Match </button>
@@ -98,11 +104,23 @@ function DetailMatch({ match , type_match , go_prev , id_user }) {
         )
     }
 
-    else if ( type_match == "rejected" ) {
+    else if ( type_match == "accepted" && ie == "past" ) {
+        content = (
+            <></>
+        )
+    }
+
+    else if ( type_match == "rejected" && ie == "future" ) {
         content = (
             <>
                 <button onClick={() => accept_handler()}> Accept Match </button>
             </>
+        )
+    }
+
+    else if ( type_match == "rejected" && ie == "past" ) {
+        content = (
+            <></>
         )
     }
 

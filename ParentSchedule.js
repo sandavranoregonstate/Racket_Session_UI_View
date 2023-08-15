@@ -8,7 +8,6 @@ import SelectType from "../components/SelectType"
 import SelectStartTime from "../components/SelectStartTime"
 
 
-import './ParentSchedule.css';
 
 async function sendPost( id_user, location, date , start_time , type ) {
     const response = await fetch('http://127.0.0.1:8000/new_schedule_and_match/schedules/', {

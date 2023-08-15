@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import TheCardForFeedback from "../components/TheCardForFeedback"
-
 function ListFeedback ( { feedbacks , onSelectFeedback }) {
 
     console.log(feedbacks) ;
