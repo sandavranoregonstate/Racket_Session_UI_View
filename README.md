@@ -1,7 +1,3 @@
 # Communicating with an HTTP API
 
-We'll use this code as a starting point for exploring HTTP communication from a React app.  The first time you run this app, make sure to run `npm install` first, to install needed dependencies.  Then, to run the app and see it in your browser, you can run
-```
-npm start
-```
-This will run the app in the development mode, and it should automatically open [http://localhost:3000](http://localhost:3000) to view the app in your browser (though you can manually open that URL in your browser, too).  The app is set up so that the page will reload if you make edits to the code.  You will also see any lint errors in the console.
+This is the UI part of the Racket Session project, I had some issues with pusing React code to the repository, therefore this is a temporary fix, the files are correct however without the file structure it is not possible to deploy. 
